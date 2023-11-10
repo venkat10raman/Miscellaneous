@@ -6,14 +6,16 @@ import java.io.ObjectOutputStream;
 
 public class Serialization {
 
-	public void perform(Object object, String filename) {
+	public static void perform(Object object, String filename) {
 		try {
-			ObjectOutput out = new ObjectOutputStream(
-			new FileOutputStream(filename));
+			System.out.println("Serialization is Started");
+			FileOutputStream file = new FileOutputStream(filename);
+			ObjectOutput out = new ObjectOutputStream(file);
 	
 			out.writeObject(object);
 			out.close();
-			System.out.println("Serialization is done");
+			file.close();
+			System.out.println("Serialization is Done");
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
