@@ -12,7 +12,12 @@ public class Spaceship implements Cloneable {
 		this.name = name;
 		this.crew = crew;
 		this.fuel = fuel;
-		this.captain = captain;
+		
+		//shallow-copy
+		//this.captain = captain;
+		
+		//deep copy
+		this.captain = new Alien(captain.getName(), captain.getHeight(), captain.getWeight());
 	}
 
 	@Override

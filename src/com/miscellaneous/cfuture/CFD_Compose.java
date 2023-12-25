@@ -3,7 +3,12 @@ package com.miscellaneous.cfuture;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
-public class Compose {
+/*
+thenCompose() method allows us to chain two different CFs
+sequentially, its input argument is Function<T,R>
+*/
+
+public class CFD_Compose {
 
 	public static void main(String[] args) {
 		long startTime = System.currentTimeMillis();

@@ -3,6 +3,23 @@ package com.miscellaneous.cfuture;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
+/*
+A synchronization aid that allows one or more
+threads to wait until a set of operations being
+performed in other threads completes
+
+CDL is always intialized with a given _count
+
+await() method block main-thread until the 
+_count reaches to zero
+
+countDown() reduces the count by 1 upon completion of service
+
+_count cannot be reset
+
+*/
+
+
 public class CountDownLatchExample {
 	
 	public static void main(String[] args) throws InterruptedException {

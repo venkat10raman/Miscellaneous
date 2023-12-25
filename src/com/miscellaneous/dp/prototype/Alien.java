@@ -30,5 +30,17 @@ public class Alien implements Cloneable {
 				+ ", weight=" + weight 
 				+ "]";
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public Double getHeight() {
+		return height;
+	}
+
+	public Double getWeight() {
+		return weight;
+	}
 	
 }

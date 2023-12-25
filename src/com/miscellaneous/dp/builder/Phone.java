@@ -13,6 +13,7 @@ public class Phone {
 	private int battery;
 	private double screenSize;
 	
+	@SuppressWarnings("unused")
 	private Phone() {}
 	
 	public Phone(PhoneBuilder builder) {

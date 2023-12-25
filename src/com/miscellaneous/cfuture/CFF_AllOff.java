@@ -3,12 +3,21 @@ package com.miscellaneous.cfuture;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
-public class AnyOff {
+
+/*
+allOf() method takes array of CF as arguments
+and execute all CF in parallell and wait untill
+all the CF execute completely
+
+its return type is CompletableFuture<Void>
+*/
+
+public class CFF_AllOff {
 
 	public static void main(String[] args) {
 		long startTime = System.currentTimeMillis();
-		CompletableFuture<Object> future = CompletableFuture.anyOf(futureOne(), futureTwo(), futureThree());
-		System.out.println(future.join());
+		CompletableFuture<Void> future = CompletableFuture.allOf(futureOne(), futureTwo(), futureThree());
+		future.join();
 		long endTime = System.currentTimeMillis();
 		System.out.println("Time taken " + (endTime-startTime)/1000);
 	}

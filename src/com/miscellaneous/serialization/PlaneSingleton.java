@@ -24,7 +24,7 @@ public class PlaneSingleton implements Serializable, Cloneable {
 		return instance;
 	}
 	
-	// By implementing readObject method,  
+	// By implementing readResolve method,  
     // we can prevent new object creation from de-serialization
 	protected Object readResolve() {return instance;}
 	

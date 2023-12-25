@@ -1,18 +1,30 @@
 package com.miscellaneous;
 
 import java.util.Arrays;
+import java.util.Random;
+import java.util.stream.IntStream;
+
+import com.miscellaneous.util.CommonUtil;
 
 public class BoyerMoore {
 
 	public static void main(String[] args) {
 		BoyerMoore bm = new BoyerMoore();
-		bm.perform(new int[] { 1, 1, 1, 1, 2, 3, 4 });
-		bm.perform(new int[] { 1, 2, 3, 1, 2, 3, 4 });
-		bm.perform(new int[] { 1, 2, 1, 1, 2, 1, 4 });
 		
-		bm.maxOccurred(new int[] { 1, 1, 1, 1, 2, 3, 4 });
-		bm.maxOccurred(new int[] { 1, 2, 3, 2, 2, 3, 4 });
-		bm.maxOccurred(new int[] { 1, 2, 1, 1, 2, 1, 4 });
+		Random random = new Random();
+		IntStream.range(0, 10).forEach(i -> {
+			int[] arr = new int[10];
+			
+			IntStream.range(0, 10).forEach(j -> {
+				arr[j] = random.nextInt(1, 5);
+			});
+			
+			CommonUtil.printIntArray(arr);
+			
+			bm.perform(arr);
+			bm.maxOccurred(arr);
+		});
+		
 	}
 	
 	public void perform(int[] nums) {
@@ -50,18 +62,22 @@ public class BoyerMoore {
 		for(int num : nums) {
 			if(num == element) {
 				count++;
-			} else if(maxCount < count) {
-				maxCount =  count;
-				maxElement = element ;
-				element = num;
-				count = 1;
 			} else {
+				if(maxCount < count) {
+					maxCount =  count;
+					maxElement = element ;
+				}
 				element = num;
 				count = 1;
 			}
 		}
-		System.out.println("Max occured element is :: "+maxElement);
-		System.out.println("Max occured :: "+maxCount);
+		
+		if(maxCount < count) {
+			maxCount =  count;
+			maxElement = element ;
+		}
+		System.out.println("MOE-WS element :: "+maxElement);
+		System.out.println("MOE-WS occured :: "+maxCount);
 	}
 
 }

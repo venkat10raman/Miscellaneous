@@ -1,16 +1,25 @@
 package com.miscellaneous;
 
+import java.util.Random;
+import java.util.stream.IntStream;
+
+import com.miscellaneous.util.CommonUtil;
+
 public class SecondLargest {
 
 	public static void main(String[] args) {
 		SecondLargest sl = new SecondLargest();
-		sl.anonymous(new int[] {1,2,3,4,5,6,7,8});
-		sl.anonymous(new int[] {8,7,6,5,4,3,2,1});
-		sl.anonymous(new int[] {-1,-2,-3,-4,-5,-6,-7,-8});
-		sl.anonymous(new int[] {-8,-7,-6,-5,-4,-3,-2,-1});
-		sl.anonymous(new int[] {4,7,1,9,3,0,8});
-		sl.anonymous(new int[] {8,7,1,9,3,0,4});
-		sl.anonymous(new int[] {-8,7,1,-9,3,0,4});
+		
+		Random random = new Random();
+		IntStream.range(0, 10).forEach(i -> {
+			int[] arr = new int[10];
+			IntStream.range(0, 10).forEach(j -> {
+				arr[j] = random.nextInt(-20, 20);
+			});
+			
+			CommonUtil.printIntArray(arr);
+			sl.anonymous(arr);
+		});
 	}
 	
 	private void anonymous(int[] nums) {
