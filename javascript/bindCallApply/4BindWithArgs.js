@@ -30,6 +30,7 @@
 	 bindObj.printHi = this;
 	 
 	 return function(){
+		 //both will work
 		 bindObj.printHi(...args);
 		 bindObj.printHi(args);
 	 }
