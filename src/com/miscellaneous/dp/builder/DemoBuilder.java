@@ -6,6 +6,7 @@ public class DemoBuilder {
 		PhoneBuilder builder = PhoneBuilder.create("linux", "intel");
 		builder.setRam(16).setBattery(50000).setScreenSize(14);
 		System.out.println(builder.build());
+//		Phone phone = new Phone();
 	}
 
 }
