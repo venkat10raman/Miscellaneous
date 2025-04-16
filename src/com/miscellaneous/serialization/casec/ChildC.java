@@ -20,14 +20,16 @@ public class ChildC extends ParentC {
     // we can prevent  
     // subclass from serialization  
     private void writeObject(ObjectOutputStream out) throws IOException {  
-        throw new NotSerializableException();  
+        System.out.println("Hi Venkat from write object");
+//    	throw new NotSerializableException();  
     }  
       
     // By implementing readObject method,  
     // we can prevent  
     // subclass from de-serialization  
     private void readObject(ObjectInputStream in) throws IOException {  
-        throw new NotSerializableException();  
+    	System.out.println("Hi Venkat from read object");
+//    	throw new NotSerializableException();  
     } 
 
 	public int getChildId() {

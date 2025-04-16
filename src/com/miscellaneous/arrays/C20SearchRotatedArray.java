@@ -7,6 +7,7 @@ public class C20SearchRotatedArray {
 	public static void main(String[] args) {
 		search(new int[] {5,4,1,2,3}, 5);
 		search(new int[] {4,5,1,2,3}, 2);
+		search(new int[] {4,5,1,2,3}, 1);
 	}
 	
 	private static void search(int[] array, int target) {
@@ -16,6 +17,7 @@ public class C20SearchRotatedArray {
 			int mid = (left+right)/2;
 			if(array[mid]==target) {
 				targetIndex = mid;
+				break;
 			}
 			if(array[left] <= array[mid]) {
 				if(array[left] <= target && target < array[mid]) {

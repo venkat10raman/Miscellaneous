@@ -1,4 +1,4 @@
-package com.miscellaneous.ds.implement;
+package com.miscellaneous.DSA.implement;
 
 import java.util.Comparator;
 import java.util.LinkedList;

@@ -26,10 +26,10 @@ public class C23LongestIncreasingSequence {
 		int currentMax = array[0];
         for (int i = 1; i < n; i++) {
         	currentMax = Math.max(array[i], currentMax);
-        	for(int prev=0; prev < i; prev++) {
-        		if(array[i] >= currentMax && seqList[i] < seqList[prev]+1) {
-        			seqList[prev] = seqList[prev] == 0 ? 1 :seqList[prev];
-        			seqList[i] = seqList[prev]+1;
+        	for(int j=0; j < i; j++) {
+        		if(array[i] >= currentMax && seqList[i] < seqList[j]+1) {
+        			seqList[j] = seqList[j] == 0 ? 1 :seqList[j];
+        			seqList[i] = seqList[j]+1;
         		}
         	}
         }

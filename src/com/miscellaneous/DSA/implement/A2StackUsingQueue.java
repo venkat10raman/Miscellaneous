@@ -1,4 +1,4 @@
-package com.miscellaneous.ds.implement;
+package com.miscellaneous.DSA.implement;
 
 import java.util.LinkedList;
 import java.util.Queue;

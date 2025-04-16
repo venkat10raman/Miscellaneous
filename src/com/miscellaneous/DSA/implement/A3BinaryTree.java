@@ -1,4 +1,9 @@
-package com.miscellaneous.ds.implement;
+package com.miscellaneous.DSA.implement;
+
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
 
 public class A3BinaryTree {
 
@@ -63,7 +68,6 @@ public class A3BinaryTree {
 		}
 	}
 
-
 	// Postorder traversal (Left, Right, Root)
 	public void postorder() {
 		postorder(root);
@@ -116,12 +120,12 @@ public class A3BinaryTree {
 		while (node.left != null) node = node.left;
 		return node;
 	}
-	
+
 	private void findLCA(int p, int q) {
 		TreeNode node = findLCA(root, p, q);
 		StringBuilder sb = new StringBuilder();
 		sb.append("LCA of ").append(p).append(" and ")
-			.append(q).append(" is ::: ").append(node.data);
+		.append(q).append(" is ::: ").append(node.data);
 		System.out.println(sb.toString());
 	}
 
@@ -139,7 +143,64 @@ public class A3BinaryTree {
 		}
 
 		return (left != null) ? left : right;
-			// Return the non-null subtree
+		// Return the non-null subtree
+	}
+
+	// Validate if a tree is a BST
+	private boolean isValidBST() {
+		return isValidBSTHelper(root, Long.MIN_VALUE, Long.MAX_VALUE);
+	}
+
+	private boolean isValidBSTHelper(TreeNode node, long min, long max) {
+		if(node == null) return true;
+		if(node.data <= min || node.data >= max) return false;
+		return isValidBSTHelper(node.left, min, node.data) && isValidBSTHelper(node.right, node.data, max);
+	}
+
+	// Find kth smallest element in BST
+	private int kthSmallest(int k) {
+		Stack<TreeNode> stack = new Stack<>();
+		TreeNode node = root;
+		while(true) {
+			while(node != null) {
+				stack.push(node);
+				node = node.left;
+			}
+			node = stack.pop();
+			if(--k == 0) return node.data;
+			node = node.right;
+		}
+	}
+	
+	// Serialize a binary tree to a string
+	private String serialize() {
+		StringBuilder sb = new StringBuilder();
+		serializeHelper(root, sb);
+		return sb.toString();
+	}
+
+	private void serializeHelper(TreeNode node, StringBuilder sb) {
+		if(node == null) {
+			sb.append("null,");
+			return;
+		}
+		sb.append(node.data).append(",");
+		serializeHelper(node.left, sb);
+		serializeHelper(node.right, sb);
+	}
+	
+	private TreeNode deserialize(String data) {
+		Queue<String> nodes = new LinkedList<>(Arrays.asList(data.split(",")));
+		return deserializeHelper(nodes);
+	}
+
+	private TreeNode deserializeHelper(Queue<String> nodes) {
+		String val = nodes.poll();
+		if (val.equals("null")) return null;
+		TreeNode node = new TreeNode(Integer.parseInt(val));
+		node.left = deserializeHelper(nodes);
+		node.right = deserializeHelper(nodes);
+		return node;
 	}
 
 	public static void main(String[] args) {
@@ -165,13 +226,25 @@ public class A3BinaryTree {
 		System.out.println("Search 90: " + tree.search(90)); // false
 
 		tree.findLCA(60, 80);
-		
+
 		tree.deleteNode(50);
 		tree.inorder();
 		tree.deleteNode(30);
 		tree.inorder();
-		
+
 		tree.findLCA(60, 80);
+
+		int k = 3;
+		System.out.println("\nThe " + k + "rd smallest element is: " + tree.kthSmallest(k));
+
+		System.out.println("\nIs the tree a valid BST? " + tree.isValidBST());
+		
+		// Serialization and De-serialization
+        String serializedTree = tree.serialize();
+        System.out.println("\nSerialized Tree: " + serializedTree);
+        
+        TreeNode deserializedRoot = tree.deserialize(serializedTree);
+        System.out.println("Deserialization successful, root value: " + deserializedRoot.data);
 	}
 
 }

@@ -1,4 +1,4 @@
-package com.miscellaneous.ds.implement;
+package com.miscellaneous.DSA.implement;
 
 public class A1LinkedList {
 	// Head of the list
@@ -69,6 +69,21 @@ public class A1LinkedList {
 		}
 		return true;
 	}
+	
+	private void middleNode() {
+		if(head == null) {
+			System.out.println("list is empty");
+		} else if(head.next == null) {
+			System.out.println("Middle node is :: "+ head.data);
+		} else {
+			Node slow = head, fast = head.next;
+			while(fast != null && fast.next != null) {
+				slow = slow.next;
+				fast = fast.next.next;
+			}
+			System.out.println("Middle node is :: "+ slow.data);
+		}
+	}
 
 	private Node removeNthFromEnd(int n) {
 		// create a dummy node
@@ -96,6 +111,20 @@ public class A1LinkedList {
 		//discard dummy
 		dummy =null;
 		return head;
+	}
+	
+	private void reverse() {
+		Node previous = null;
+		Node current = head;
+		Node next = null;
+		
+		while(current != null) {
+			next = current.next;
+			current.next = previous;
+			previous = current;
+			current = next;
+		}
+		head = previous;
 	}
 
 	private void printList() {
@@ -125,6 +154,13 @@ public class A1LinkedList {
 		System.out.println(list.removeNthFromEnd(2).data);
 		list.printList();
 		System.out.println(list.removeNthFromEnd(2).data);
+		list.printList();
+		
+		list.insert(20);
+		list.insert(30);
+		list.insert(40);
+		list.middleNode();
+		list.reverse();
 		list.printList();
 	}
 
