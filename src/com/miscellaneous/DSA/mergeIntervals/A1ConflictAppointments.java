@@ -30,7 +30,7 @@ public class A1ConflictAppointments {
 		Arrays.sort(appointments, (a, b) -> a.start != b.start 
 				? Integer.compare(a.start, b.start) 
 						: Integer.compare(a.end, b.end));
-
+		printIntervals(appointments);
 		// Check for any overlap
 		for (int i = 1; i < appointments.length; i++) {
 			if (appointments[i].start < appointments[i - 1].end) {

@@ -1,7 +1,9 @@
 package com.miscellaneous.DSA.implement;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 import java.util.Stack;
 
@@ -172,6 +174,21 @@ public class A3BinaryTree {
 		}
 	}
 	
+	private int kthLargest(int k) {
+		Stack<TreeNode> stack = new Stack<>();
+		TreeNode node = root;
+		
+		while(true) {
+			while(node != null) {
+				stack.push(node);
+				node = node.right;
+			}
+			node = stack.pop();
+			if(--k == 0) return node.data;
+			node = node.left;
+		}
+	}
+	
 	// Serialize a binary tree to a string
 	private String serialize() {
 		StringBuilder sb = new StringBuilder();
@@ -221,6 +238,12 @@ public class A3BinaryTree {
 
 		System.out.println("\nPostorder Traversal:");
 		tree.postorder(tree.root);
+		
+		System.out.println("\nBFS Traversal:");
+		tree.bfsLevelOrder(tree.root);
+		
+		System.out.println("\nDFS Traversal:");
+		tree.dfsIteratorPreOrder(tree.root);
 
 		System.out.println("\nSearch 40: " + tree.search(40)); // true
 		System.out.println("Search 90: " + tree.search(90)); // false
@@ -236,6 +259,7 @@ public class A3BinaryTree {
 
 		int k = 3;
 		System.out.println("\nThe " + k + "rd smallest element is: " + tree.kthSmallest(k));
+		System.out.println("\nThe " + k + "rd largest element is: " + tree.kthLargest(k));
 
 		System.out.println("\nIs the tree a valid BST? " + tree.isValidBST());
 		
@@ -245,6 +269,45 @@ public class A3BinaryTree {
         
         TreeNode deserializedRoot = tree.deserialize(serializedTree);
         System.out.println("Deserialization successful, root value: " + deserializedRoot.data);
+	}
+
+	private void bfsLevelOrder(TreeNode node) {
+		if (node == null) {
+            throw new IllegalStateException("Tree is empty");
+        }
+		List<Integer> result = new ArrayList<>();
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        
+        while(!queue.isEmpty()) {
+        	node = queue.poll();
+        	result.add(node.data);
+        	if(node.left != null) queue.offer(node.left);
+        	if(node.right != null) queue.offer(node.right);
+        }
+        System.out.println(result);
+        System.out.println("----------");
+	}
+	
+	// Iterative DFS (Preorder: Root → Left → Right)
+	private void dfsIteratorPreOrder(TreeNode node) {
+		if (node == null) {
+            throw new IllegalStateException("Tree is empty");
+        }
+		List<Integer> result = new ArrayList<>();
+		Stack<TreeNode> stack = new Stack<>();
+		stack.push(node);
+		
+		while(!stack.isEmpty()) {
+			node = stack.pop();
+			result.add(node.data);
+			
+			// Push right first (so left is processed first due to stack)
+			if(node.right != null) stack.push(node.right);
+			if(node.left != null) stack.push(node.left);
+		}
+		System.out.println(result);
+        System.out.println("----------");
 	}
 
 }

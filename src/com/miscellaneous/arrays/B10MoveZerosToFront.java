@@ -1,5 +1,10 @@
 package com.miscellaneous.arrays;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import com.miscellaneous.util.CommonUtil;
 
 public class B10MoveZerosToFront {
@@ -37,6 +42,12 @@ public class B10MoveZerosToFront {
         }
         
         CommonUtil.printIntArray(array);
+        
+        System.out.println("Using streams");
+        List<Integer> list = Stream.concat(Arrays.stream(array).boxed().filter(n -> n == 0), 
+        		Arrays.stream(array).boxed().filter(n -> n !=0))
+    		.collect(Collectors.toList());
+        System.out.println(list);
         System.out.println("------------------");
 	}
 }

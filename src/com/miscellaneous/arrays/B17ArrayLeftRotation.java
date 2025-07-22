@@ -11,11 +11,7 @@ public class B17ArrayLeftRotation {
 	private static void leftRotate(int[] array, int rotations) {
 		CommonUtil.printIntArray(array);
 		
-		rotations = Math.abs(rotations);
-		while(rotations >= array.length-1) {
-			rotations = rotations-array.length;
-		}
-
+		rotations = rotations % array.length;
 		if(rotations == 0) {
 			System.out.println("After rotation");
 			CommonUtil.printIntArray(array);

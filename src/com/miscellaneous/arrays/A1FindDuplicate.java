@@ -40,6 +40,8 @@ public class A1FindDuplicate {
 		for (int element : array) {
 			map.putIfAbsent(element, 0);
 			map.put(element, map.get(element)+1);
+			
+//			map.put(element, map.getOrDefault(element, 0)+1);
 		}
 		
 		Set<Entry<Integer,Integer>> entrySet = map.entrySet();

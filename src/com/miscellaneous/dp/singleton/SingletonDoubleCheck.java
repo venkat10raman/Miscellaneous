@@ -2,7 +2,7 @@ package com.miscellaneous.dp.singleton;
 
 public class SingletonDoubleCheck {
 	
-	private static SingletonDoubleCheck instance = null;
+	private static volatile SingletonDoubleCheck instance = null;
 	
 	private SingletonDoubleCheck() {}
 

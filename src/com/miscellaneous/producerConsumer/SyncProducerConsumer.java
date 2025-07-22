@@ -13,20 +13,29 @@ public class SyncProducerConsumer {
 	}
 	
 	public void anonymous() {
-		String key = "venkat-";
-		final SyncBlockQueue queue = new SyncBlockQueue();
+		final SyncBlockQueue queue = new SyncBlockQueue(10);
 		
 		final Runnable producer = () -> {
-			while (producerCount.getAndIncrement() < 200) {
-				queue.put(key);
+			while(producerCount.get() < 200) {
+				queue.put(producerCount.incrementAndGet());
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 			}
 		};
 		new Thread(producer, "p1").start();
 		new Thread(producer, "p2").start();
 		
 		final Runnable consumer = () -> {
-			while (consumerCount.getAndIncrement() < 200) {
+			while(consumerCount.incrementAndGet() <= 200) {
 				queue.take();
+				try {
+					Thread.sleep(200);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 			}
 		};
 		new Thread(consumer, "c1").start();

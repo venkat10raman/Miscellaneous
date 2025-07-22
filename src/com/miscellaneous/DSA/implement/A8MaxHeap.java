@@ -2,8 +2,6 @@ package com.miscellaneous.DSA.implement;
 
 import java.util.Arrays;
 
-import com.miscellaneous.util.CommonUtil;
-
 public class A8MaxHeap {
 
 	private int[] heap;

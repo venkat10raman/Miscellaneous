@@ -2,53 +2,50 @@ package com.miscellaneous.producerConsumer;
 
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class SyncBlockQueue {
 	
-	private final Queue<String> queue;
-	private final AtomicInteger atomicInteger = new AtomicInteger(10);
+	private final Queue<Integer> queue;
+	private final Object lock = new Object();
+	private final int capacity;
 	
-	public SyncBlockQueue() {
-		queue = new LinkedList<>();
+	public SyncBlockQueue(int capacity) {
+		if (capacity <= 0) {
+			throw new IllegalArgumentException("Capacity must be positive");
+		}
+		this.capacity = capacity;
+		this.queue = new LinkedList<>();
 	}
 	
-	public void put(String key) {
-		synchronized (queue) {
+	public void put(Integer key) {
+		synchronized (lock) {
 			try {
-				while (queue.size() == 10) {
-					queue.wait();
+				while (queue.size() == capacity) {
+					lock.wait();
 				}
-				StringBuilder sb = new StringBuilder();
-				sb.append(key).append(atomicInteger.getAndIncrement());
-				queue.add(sb.toString());
-				sb.append(" is produced by :: ")
-				.append(Thread.currentThread().getName());
-				System.out.println(sb);
+				queue.add(key);
+				System.out.println(Thread.currentThread().getName() + " put: " + key);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			} finally {
-				queue.notifyAll();
+				lock.notifyAll();
 			}
 		}
 	}
 	
 	public void take() {
-		synchronized (queue) {
+		synchronized (lock) {
 			try {
 				while (queue.size() == 0) {
-					queue.wait();
+					lock.wait();
 				}
-				StringBuilder sb = new StringBuilder();
-				sb.append(queue.remove())
-				.append(" is consumed by :: ")
-				.append(Thread.currentThread().getName());
-				atomicInteger.getAndDecrement();
-				System.out.println(sb);
+				Integer item = queue.remove();
+				System.out.println(Thread.currentThread().getName() + " took: " + item);
+				lock.notifyAll(); 
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			} finally {
-				queue.notifyAll();
+				lock.notifyAll();
 			}
 		}
 	}

@@ -1,5 +1,6 @@
 package com.miscellaneous.string;
 
+import java.util.LinkedList;
 import java.util.Stack;
 
 public class A6ValidParantheses {
@@ -7,6 +8,10 @@ public class A6ValidParantheses {
 	public static void main(String[] args) {
 		validParantheses("[(){}]");
 		validParantheses("[(){}]}");
+		
+		validParanthesesLL("[(){}]");
+		validParanthesesLL("[(){}]{}");
+		validParanthesesLL("[(){}]}{");
 	}
 	
 	private static void validParantheses(String input) {
@@ -28,8 +33,30 @@ public class A6ValidParantheses {
 		}
 		if(stack.empty() && isValid) {
 			System.out.println(input+" :: is a valid Parantheses");
-		} else {
-			System.out.println(input+" :: is not a valid Parantheses");
+		}
+	}
+	
+	private static void validParanthesesLL(String input) {
+		LinkedList<Character> ll = new LinkedList<>();
+		boolean isValid = true;
+		for(Character ch : input.toCharArray()) {
+			if(ch == '(' || ch == '{' || ch == '[') {
+				ll.add(ch);
+			} else if(!ll.isEmpty() && (
+					(ll.getLast() == '(' && ch == ')')
+					|| (ll.getLast() == '[' && ch == ']')
+					|| (ll.getLast() == '{' && ch == '}')
+					)) {
+				ll.removeLast();
+			} else {
+				System.out.println(input+" :: is not a valid Parantheses");
+				isValid = false;
+				break;
+			}
+		}
+		
+		if(ll.isEmpty() && isValid) {
+			System.out.println(input+" :: is a valid Parantheses");
 		}
 	}
 

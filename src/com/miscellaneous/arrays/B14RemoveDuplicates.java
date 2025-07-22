@@ -1,5 +1,12 @@
 package com.miscellaneous.arrays;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
 import com.miscellaneous.util.CommonUtil;
 
 public class B14RemoveDuplicates {
@@ -18,6 +25,20 @@ public class B14RemoveDuplicates {
 		CommonUtil.printIntArray(array);
 		int noOfUniqueElements = array.length;
 		
+		Set<Integer> set = new HashSet<>();
+		
+		int index = 0, left =0;
+		while(left < noOfUniqueElements) {
+			if(set.add(array[left])) {
+				array[index] = array[left];
+				index++;
+			}
+			left++;
+		}
+		
+		System.out.println("Unique Elements are :::");
+		CommonUtil.printIntArray(array, 0, index-1);
+		
 		for(int i=0; i<noOfUniqueElements; i++) {
 			for(int j=i+1; j<noOfUniqueElements; j++) {
 				//If any two elements are found equal
@@ -34,6 +55,14 @@ public class B14RemoveDuplicates {
 		}
 		System.out.println("Unique Elements are :::");
 		CommonUtil.printIntArray(array, 0, noOfUniqueElements-1);
+		
+		set.clear();
+		Arrays.stream(array)
+				.boxed()
+				.filter(e -> set.add(e))
+				.map(i-> i+" ")
+				.forEach(System.out::print);
+		System.out.println();
 		System.out.println("-------------------");
 		
 	}

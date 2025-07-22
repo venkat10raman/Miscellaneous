@@ -25,6 +25,14 @@ public class C25HouseRobber {
         	secondLast = last;
         	last = result;
         }
+        
+        int secondPrev=array[0], prev = Math.max(array[0], array[1]);
+        int maxRob = 0;
+        for(int i = 2 ; i < array.length-1; i++) {
+        	maxRob = Math.max(secondPrev + array[i], prev);
+        	secondPrev = prev;
+        	prev = maxRob;
+        }
         CommonUtil.printIntArray(array);
         System.out.println("Maximum amount that can be robbed: " + last);
         System.out.println("------------");

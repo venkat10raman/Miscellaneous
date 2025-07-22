@@ -1,7 +1,10 @@
 package com.miscellaneous.arrays;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import com.miscellaneous.util.CommonUtil;
 
@@ -26,6 +29,10 @@ public class B12ElemetFrequency {
 		}
 		CommonUtil.printIntArray(array);
 		System.out.println("Element Count : "+map);
+		Map<Integer, Long> collect = Arrays.stream(array)
+			.boxed()
+			.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+		System.out.println("Element Count : "+collect);
 		System.out.println("-------------------------");
 	}
 }

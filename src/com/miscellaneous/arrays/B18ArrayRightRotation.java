@@ -11,11 +11,7 @@ public class B18ArrayRightRotation {
 	private static void rightRotation(int[] array, int rotations) {
 		CommonUtil.printIntArray(array);
 
-		rotations = Math.abs(rotations);
-		while(rotations >= array.length-1) {
-			rotations = rotations-array.length;
-		}
-
+		rotations = rotations % array.length;
 		if(rotations == 0) {
 			System.out.println("After rotation");
 			CommonUtil.printIntArray(array);
@@ -30,7 +26,6 @@ public class B18ArrayRightRotation {
 			}
 			array[0] = temp;
 		}
-		
 		
 		CommonUtil.printIntArray(array);
 	}

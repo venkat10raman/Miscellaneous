@@ -3,8 +3,6 @@ package com.miscellaneous.locks;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-import com.miscellaneous.threads.casef.CounterCaseC;
-
 public class CounterLock {
 	
 	private final Lock lock = new ReentrantLock();

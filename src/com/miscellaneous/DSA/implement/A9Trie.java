@@ -61,6 +61,7 @@ public class A9Trie {
         // Check for prefixes
         System.out.println(trie.startsWith("ap"));  // Output: true
         System.out.println(trie.startsWith("ba"));  // Output: false
+        System.out.println(trie.startsWith("apple")); 
 	}
 
 }

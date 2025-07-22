@@ -135,6 +135,64 @@ public class A1LinkedList {
 		}
 		System.out.println("null");
 	}
+	
+	private void printReverse() {
+		System.out.println("Printing List in reverse order");
+		printReverse(head);
+		System.out.println();
+	}
+	
+	private void printReverse(Node node) {
+		if(node == null) {
+			return;
+		}
+		printReverse(node.next);
+		System.out.print(node.data + " -> ");
+	}
+	
+	private void rightRotation(int k) {
+		Node tail = head;
+		if(tail == null || tail.next == null) return;
+		// first find the length of the list
+		int length = 1;
+		while(tail.next != null) {
+			tail = tail.next;
+			length++;
+		}
+		
+		if(k % length == 0) {
+			printList();
+			return;
+		}
+		
+		Node newTail = head;
+		int i = 0;
+		while(i < length-k-1) {
+			newTail = newTail.next;
+			i++;
+		}
+		Node newHead = newTail.next;
+		newTail.next = null;
+		tail.next = head;
+		head = newHead;
+		printList();
+	}
+	
+	private void removeDuplicates() {
+		// assume the linked list is sorted
+		Node node = head;
+		Node duplicate = null;
+		while(node.next != null) {
+			if(node.data == node.next.data) {
+				duplicate = node.next;
+				node.next = duplicate.next;
+				duplicate = null;
+			} else {
+				node = node.next;
+			}
+		}
+	}
+	
 
 	public static void main(String[] args) {
 		A1LinkedList list = new A1LinkedList();
@@ -145,6 +203,7 @@ public class A1LinkedList {
 
 		System.out.println("Linked List after insertion:");
 		list.printList();
+		list.printReverse();
 
 		list.delete(20);
 		System.out.println("Linked List after deletion of 20:");
@@ -159,8 +218,23 @@ public class A1LinkedList {
 		list.insert(20);
 		list.insert(30);
 		list.insert(40);
+		list.insert(70);
 		list.middleNode();
 		list.reverse();
+		list.printList();
+		list.printReverse();
+		list.rightRotation(3);
+		
+		System.out.println("-----------");
+		list = new A1LinkedList();
+		list.insert(10);
+		list.insert(10);
+		list.insert(10);
+		list.insert(10);
+		list.insert(20);
+		list.insert(20);
+		list.insert(30);
+		list.removeDuplicates();
 		list.printList();
 	}
 

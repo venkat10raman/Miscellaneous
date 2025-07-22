@@ -1,5 +1,10 @@
 package com.miscellaneous.arrays;
 
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import com.miscellaneous.util.CommonUtil;
 
 public class B13ReverseArray {
@@ -14,6 +19,10 @@ public class B13ReverseArray {
 
 	private static void reverseArray(int array[]) {
 		CommonUtil.printIntArray(array);
+		List<Integer> reverseList = Arrays.stream(array)
+			.boxed()
+			.sorted(Comparator.reverseOrder())
+			.collect(Collectors.toList());
 
 		int left = 0;
 		int right = array.length-1;
@@ -23,6 +32,7 @@ public class B13ReverseArray {
 			right--;
 		}
 		CommonUtil.printIntArray(array);
+		System.out.println(reverseList);
 		System.out.println("----------------");
 	}
 }

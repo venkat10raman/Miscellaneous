@@ -11,7 +11,7 @@ public class A2CheckRotation {
 		StringBuilder sb = new StringBuilder();
 		boolean isNotRotational = false;
 		if(one.length() == two.length()) {
-			String three = sb.append(one).append(two).toString();
+			String three = sb.append(one).append(one).toString();
 			if(three.contains(two)) {
 				System.out.print(one);
 				System.out.print(" :: is a rotaional string of :: ");
