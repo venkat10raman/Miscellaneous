@@ -4,14 +4,14 @@ public class A3NodeAtK {
 
 	public static void main(String[] args) {
 		BNode root = new BNode(10);
-		root.setLeft(new BNode(8));
-		root.getLeft().setRight(new BNode(9));
-		root.getLeft().setLeft(new BNode(7));
+		root.left = (new BNode(8));
+		root.left.right = (new BNode(9));
+		root.left.left = (new BNode(7));
 		
 		
-		root.setRight(new BNode(12));
-		root.getRight().setLeft(new BNode(11));
-		root.getRight().setRight(new BNode(13));
+		root.right = (new BNode(12));
+		root.right.left = (new BNode(11));
+		root.right.right = (new BNode(13));
 		
 		nodeAtKthDistance(root,2);
 	}
@@ -19,10 +19,10 @@ public class A3NodeAtK {
 	private static void nodeAtKthDistance(BNode node, int k) {
 		if(node != null) {
 			if(k==0) {
-				System.out.println(node.getData());
+				System.out.println(node.data);
 			} else {
-				nodeAtKthDistance(node.getLeft(), k-1);
-				nodeAtKthDistance(node.getRight(), k-1);
+				nodeAtKthDistance(node.left, k-1);
+				nodeAtKthDistance(node.right, k-1);
 			}
 		}
 	}

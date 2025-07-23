@@ -6,13 +6,13 @@ public class A1Inorder {
 
 	public static void main(String[] args) {
 		BNode root = new BNode(10);
-		root.setLeft(new BNode(8));
-		root.getLeft().setRight(new BNode(9));
-		root.getLeft().setLeft(new BNode(7));
+		root.left = (new BNode(8));
+		root.left.right = (new BNode(9));
+		root.left.left = (new BNode(7));
 		
-		root.setRight(new BNode(12));
-		root.getRight().setLeft(new BNode(11));
-		root.getRight().setRight(new BNode(13));
+		root.right = (new BNode(12));
+		root.right.left = (new BNode(11));
+		root.right.right = (new BNode(13));
 		
 		inorder(root);
 		System.out.println();
@@ -24,26 +24,26 @@ public class A1Inorder {
 
 	private static void postorder(BNode node) {
 		if(node != null) {
-			postorder(node.getLeft());
-			postorder(node.getRight());
-			System.out.print(node.getData() + " --> ");
+			postorder(node.left);
+			postorder(node.right);
+			System.out.print(node.data + " --> ");
 		}
 	}
 
 	private static void inorder(BNode node) {
 		if(node != null) {
-			inorder(node.getLeft());
-			System.out.print(node.getData() + " --> ");
-			inorder(node.getRight());
+			inorder(node.left);
+			System.out.print(node.data + " --> ");
+			inorder(node.right);
 		}
 		
 	}
 	
 	private static void preorder(BNode node) {
 		if(node != null) {
-			System.out.print(node.getData() + " --> ");
-			preorder(node.getLeft());
-			preorder(node.getRight());
+			System.out.print(node.data + " --> ");
+			preorder(node.left);
+			preorder(node.right);
 		}
 	}
 

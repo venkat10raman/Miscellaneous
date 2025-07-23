@@ -11,20 +11,20 @@ public class A1Insert {
 		DNode node = new DNode(data);
 		if(head == null) {
 			head = node;
-			node.setNext(head);
-			node.setPrevious(head);
+			node.next = (head);
+			node.previous = (head);
 			tail = head;
-		} else if(head.getNext() == head) {
-			head.setNext(node);
-			head.setPrevious(node);
-			node.setNext(head);
-			node.setPrevious(head);
+		} else if(head.next == head) {
+			head.next = (node);
+			head.previous = (node);
+			node.next = (head);
+			node.previous = (head);
 			tail = head;
 			head = node;
 		} else {
-			tail.setNext(node);
-			node.setPrevious(tail);
-			node.setNext(head);
+			tail.next = (node);
+			node.previous = (tail);
+			node.next = (head);
 			head = node;
 		}
 	}
@@ -33,19 +33,19 @@ public class A1Insert {
 		DNode node = new DNode(data);
 		if(head == null) {
 			head = node;
-			node.setNext(head);
-			node.setPrevious(head);
+			node.next = (head);
+			node.previous = (head);
 			tail = head;
-		} else if(head.getNext() == head) {
-			head.setNext(node);
-			head.setPrevious(node);
-			node.setNext(head);
-			node.setPrevious(head);
+		} else if(head.next == head) {
+			head.next = (node);
+			head.previous = (node);
+			node.next = (head);
+			node.previous = (head);
 			tail = node;
 		} else {
-			tail.setNext(node);
-			node.setPrevious(tail);
-			node.setNext(head);
+			tail.next = (node);
+			node.previous = (tail);
+			node.next = (head);
 			tail = node;
 		}
 	}
@@ -53,15 +53,15 @@ public class A1Insert {
 	private void deleteHead() {
 		if(head == null) {
 			System.out.println("The list is empty");
-		} else if(head.getNext() == head) {
+		} else if(head.next == head) {
 			head = null;
 			tail = null;
 		} else {
-			DNode node = head.getNext();
-			node.setPrevious(tail);
-			tail.setNext(node);
-			head.setNext(null);
-			head.setPrevious(null);
+			DNode node = head.next;
+			node.previous = (tail);
+			tail.next = (node);
+			head.next = (null);
+			head.previous = (null);
 			head = node;
 		}
 	}
@@ -69,15 +69,15 @@ public class A1Insert {
 	private void deleteTail() {
 		if(tail == null) {
 			System.out.println("The list is empty");
-		} else if(tail.getNext() == tail) {
+		} else if(tail.next == tail) {
 			tail = null;
 			head = null;
 		} else {
-			DNode node = tail.getPrevious();
-			node.setNext(head);
-			head.setPrevious(node);
-			tail.setNext(null);
-			tail.setPrevious(null);
+			DNode node = tail.previous;
+			node.next = (head);
+			head.previous = (node);
+			tail.next = (null);
+			tail.previous = (null);
 			tail = node;
 		}
 	}
@@ -117,8 +117,8 @@ public class A1Insert {
 		} else {
 			DNode temp = head;
 			do {
-				System.out.print(" --> " + temp.getData());
-				temp = temp.getNext();
+				System.out.print(" --> " + temp.data);
+				temp = temp.next;
 			} while(temp != head);
 			System.out.println();
 		}

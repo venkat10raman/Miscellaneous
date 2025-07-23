@@ -24,7 +24,7 @@ public class A2LinkedListStack {
 		if(head == null) {
 			head = temp;
 		} else {
-			temp.setNext(head);
+			temp.next = (head);
 			head = temp;
 		}
 		size++;
@@ -34,8 +34,8 @@ public class A2LinkedListStack {
 		if(head == null) {
 			return Integer.MAX_VALUE;
 		}
-		int result = head.getData();
-		head = head.getNext();
+		int result = head.data;
+		head = head.next;
 		size--;
 		return result;
 	}
@@ -44,7 +44,7 @@ public class A2LinkedListStack {
 		if(head == null) {
 			return Integer.MAX_VALUE;
 		}
-		return head.getData();
+		return head.data;
 	}
 	
 	private int size() {

@@ -4,14 +4,14 @@ public class A7BTreeSize {
 
 	public static void main(String[] args) {
 		BNode root = new BNode(10);
-		root.setLeft(new BNode(8));
-		root.getLeft().setRight(new BNode(9));
-		root.getLeft().setLeft(new BNode(7));
+		root.left = (new BNode(8));
+		root.left.right = (new BNode(9));
+		root.left.left = (new BNode(7));
 		
 		
-		root.setRight(new BNode(12));
-		root.getRight().setLeft(new BNode(11));
-		root.getRight().setRight(new BNode(13));
+		root.right = (new BNode(12));
+		root.right.left = (new BNode(11));
+		root.right.right = (new BNode(13));
 		int size = btreeSize(root);
 		System.out.println("Size of the tree :: " + size);
 	}
@@ -20,7 +20,7 @@ public class A7BTreeSize {
 		if(node == null) {
 			return 0;
 		}
-		return btreeSize(node.getLeft()) + btreeSize(node.getRight()) + 1;
+		return btreeSize(node.left) + btreeSize(node.right) + 1;
 	}
 
 }

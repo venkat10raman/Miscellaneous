@@ -10,17 +10,17 @@ public class A2Reverse {
 		if(head == null) {
 			head = newNode;
 		} else if(tail != null) {
-			tail.setNext(newNode);
-			newNode.setPrevious(tail);
+			tail.next = (newNode);
+			newNode.previous = (tail);
 			tail = newNode;
 		} else {
 			DNode curr = head;
 			
-			while(curr.getNext() != null) {
-				curr = curr.getNext();
+			while(curr.next != null) {
+				curr = curr.next;
 			}
-			curr.setNext(newNode);
-			newNode.setPrevious(curr);
+			curr.next = (newNode);
+			newNode.previous = (curr);
 			tail = newNode;
 		}
 	}
@@ -35,13 +35,13 @@ public class A2Reverse {
 			DNode next = null;
 			tail = curr;
 			while(curr != null) {
-				prev = curr.getPrevious();
-				next = curr.getNext();
-				curr.setPrevious(next);
-				curr.setNext(prev);
+				prev = curr.previous;
+				next = curr.next;
+				curr.previous = (next);
+				curr.next = (prev);
 				curr = next;
 			}
-			head = prev.getPrevious();
+			head = prev.previous;
 		}
 	}
 	
@@ -51,8 +51,8 @@ public class A2Reverse {
 		} else {
 			DNode temp = head;
 			while(temp != null) {
-				System.out.print(" --> " + temp.getData());
-				temp = temp.getNext();
+				System.out.print(" --> " + temp.data);
+				temp = temp.next;
 			}
 			System.out.println();
 		}

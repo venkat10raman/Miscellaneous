@@ -7,14 +7,14 @@ public class A4LevelOrder {
 
 	public static void main(String[] args) {
 		BNode root = new BNode(10);
-		root.setLeft(new BNode(8));
-		root.getLeft().setRight(new BNode(9));
-		root.getLeft().setLeft(new BNode(7));
+		root.left = (new BNode(8));
+		root.left.right = (new BNode(9));
+		root.left.left = (new BNode(7));
 		
 		
-		root.setRight(new BNode(12));
-		root.getRight().setLeft(new BNode(11));
-		root.getRight().setRight(new BNode(13));
+		root.right = (new BNode(12));
+		root.right.left = (new BNode(11));
+		root.right.right = (new BNode(13));
 		
 		levelOrderTraversal(root);
 	}
@@ -25,9 +25,9 @@ public class A4LevelOrder {
 		que.add(node);
 		while(!que.isEmpty()) {
 			BNode curr = que.poll();
-			System.out.print(curr.getData() + " -> ");
-			if(curr.getLeft() != null) que.add(curr.getLeft());
-			if(curr.getRight() != null) que.add(curr.getRight());
+			System.out.print(curr.data + " -> ");
+			if(curr.left != null) que.add(curr.left);
+			if(curr.right != null) que.add(curr.right);
 		}
 	}
 

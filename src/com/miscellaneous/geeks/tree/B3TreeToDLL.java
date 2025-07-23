@@ -8,43 +8,43 @@ public class B3TreeToDLL {
 
 	public static void main(String[] args) {
 		BNode root = new BNode(10);
-		root.setLeft(new BNode(8));
-		root.getLeft().setRight(new BNode(9));
-		root.getLeft().setLeft(new BNode(7));
+		root.left = (new BNode(8));
+		root.left.right = (new BNode(9));
+		root.left.left = (new BNode(7));
 		
 		
-		root.setRight(new BNode(12));
-		root.getRight().setLeft(new BNode(11));
-		root.getRight().setRight(new BNode(13));
+		root.right = (new BNode(12));
+		root.right.left = (new BNode(11));
+		root.right.right = (new BNode(13));
 		
 		BNode head = btreeToDoubleLinkedList(root);
 		BNode curr = head;
 		while (curr != null) {
-			System.out.print(curr.getData() + " ");
+			System.out.print(curr.data + " ");
 			prev = curr;
-			curr = curr.getRight();
+			curr = curr.right;
 			
 		}
 		
 		System.out.println();
 		while (prev != null) {
-			System.out.print(prev.getData() + " ");
-			prev = prev.getLeft();
+			System.out.print(prev.data + " ");
+			prev = prev.left;
 		}
 	}
 
 	private static BNode btreeToDoubleLinkedList(BNode root) {
 		if(root == null) return root;
-		BNode head = btreeToDoubleLinkedList(root.getLeft());
+		BNode head = btreeToDoubleLinkedList(root.left);
 		
 		if(prev == null) {
 			head = root;
 		} else {
-			root.setLeft(prev);
-			prev.setRight(root);
+			root.left = (prev);
+			prev.right = (root);
 		}
 		prev = root;
-		btreeToDoubleLinkedList(root.getRight());
+		btreeToDoubleLinkedList(root.right);
 		return head;
 	}
 

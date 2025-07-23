@@ -10,17 +10,17 @@ public class A1Insert {
 		if(head == null) {
 			head = newNode;
 		} else if(tail != null) {
-			tail.setNext(newNode);
-			newNode.setPrevious(tail);
+			tail.next = (newNode);
+			newNode.previous = (tail);
 			tail = newNode;
 		} else {
 			DNode curr = head;
 			
-			while(curr.getNext() != null) {
-				curr = curr.getNext();
+			while(curr.next != null) {
+				curr = curr.next;
 			}
-			curr.setNext(newNode);
-			newNode.setPrevious(curr);
+			curr.next = (newNode);
+			newNode.previous = (curr);
 			tail = newNode;
 		}
 	}
@@ -30,8 +30,8 @@ public class A1Insert {
 		if(head == null) {
 			head = newNode;
 		} else {
-			newNode.setNext(head);
-			head.setPrevious(newNode);
+			newNode.next = (head);
+			head.previous = (newNode);
 			head = newNode;
 		}
 	}
@@ -42,8 +42,8 @@ public class A1Insert {
 		} else {
 			DNode temp = head;
 			while(temp != null) {
-				System.out.print(" --> " + temp.getData());
-				temp = temp.getNext();
+				System.out.print(" --> " + temp.data);
+				temp = temp.next;
 			}
 			System.out.println();
 		}
@@ -55,8 +55,8 @@ public class A1Insert {
 		} else {
 			DNode temp = tail;
 			while(temp != null) {
-				System.out.print(" --> " + temp.getData());
-				temp = temp.getPrevious();
+				System.out.print(" --> " + temp.data);
+				temp = temp.previous;
 			}
 			System.out.println();
 		}

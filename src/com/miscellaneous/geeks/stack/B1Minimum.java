@@ -30,12 +30,12 @@ public class B1Minimum {
 			stack = temp;
 			minStack = temp;
 		} else {
-			if(temp.getData() <= minStack.getData()) {
+			if(temp.data <= minStack.data) {
 				StackNode minStackTemp = new StackNode(data);
-				minStackTemp.setNext(minStack);
+				minStackTemp.next = (minStack);
 				minStack = minStackTemp;
 				
-				temp.setNext(stack);
+				temp.next = (stack);
 				stack = temp;
 			}
 		}
@@ -45,10 +45,10 @@ public class B1Minimum {
 		if(stack == null) {
 			System.out.println("The list is Empty");
 		} else {
-			if(stack.getData() == minStack.getData()) {
-				System.out.println(stack.getData() + " is poped");
-				stack = stack.getNext();
-				minStack = minStack.getNext();
+			if(stack.data == minStack.data) {
+				System.out.println(stack.data + " is poped");
+				stack = stack.next;
+				minStack = minStack.next;
 			}
 		}
 	}
@@ -57,7 +57,7 @@ public class B1Minimum {
 		if(minStack == null) {
 			System.out.println("The stack is Empty");
 		} else {
-			System.out.println("Minimum element in the stack is :: " + minStack.getData());
+			System.out.println("Minimum element in the stack is :: " + minStack.data);
 		}
 	}
 

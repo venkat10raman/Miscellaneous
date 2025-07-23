@@ -10,17 +10,17 @@ public class A3Delete {
 		if(head == null) {
 			head = newNode;
 		} else if(tail != null) {
-			tail.setNext(newNode);
-			newNode.setPrevious(tail);
+			tail.next = (newNode);
+			newNode.previous = (tail);
 			tail = newNode;
 		} else {
 			DNode curr = head;
 			
-			while(curr.getNext() != null) {
-				curr = curr.getNext();
+			while(curr.next != null) {
+				curr = curr.next;
 			}
-			curr.setNext(newNode);
-			newNode.setPrevious(curr);
+			curr.next = (newNode);
+			newNode.previous = (curr);
 			tail = newNode;
 		}
 	}
@@ -29,21 +29,21 @@ public class A3Delete {
 		if(head == null) {
 			System.out.println("The list is empty");
 		} else {
-			head = head.getNext();
+			head = head.next;
 		}
 	}
 	
 	private void deleteTail() {
 		if(head == null) {
 			System.out.println("The list is empty");
-		} if(head.getNext() == null) {
+		} if(head.next == null) {
 			head = null;
 		} else {
 			DNode node = head;
-			while(node.getNext().getNext() != null) {
-				node = node.getNext();
+			while(node.next.next != null) {
+				node = node.next;
 			}
-			node.setNext(null);
+			node.next = (null);
 		}
 	}
 
@@ -67,8 +67,8 @@ public class A3Delete {
 		} else {
 			DNode temp = head;
 			while(temp != null) {
-				System.out.print(" --> " + temp.getData());
-				temp = temp.getNext();
+				System.out.print(" --> " + temp.data);
+				temp = temp.next;
 			}
 			System.out.println();
 		}

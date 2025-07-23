@@ -4,14 +4,14 @@ public class B2CheckBalance {
 
 	public static void main(String[] args) {
 		BNode root = new BNode(10);
-		root.setLeft(new BNode(8));
-		root.getLeft().setRight(new BNode(9));
-		root.getLeft().setLeft(new BNode(7));
+		root.left = (new BNode(8));
+		root.left.right = (new BNode(9));
+		root.left.left = (new BNode(7));
 		
 		
-		root.setRight(new BNode(12));
-		root.getRight().setLeft(new BNode(11));
-		root.getRight().setRight(new BNode(13));
+		root.right = (new BNode(12));
+		root.right.left = (new BNode(11));
+		root.right.right = (new BNode(13));
 		
 		int result = checkBalance(root);
 		if(result < 0) {
@@ -24,10 +24,10 @@ public class B2CheckBalance {
 
 	private static int checkBalance(BNode root) {
 		if(root == null) return 0;
-		int lh = checkBalance(root.getLeft());
+		int lh = checkBalance(root.left);
 		if(lh == -1) return lh;
 		
-		int rh = checkBalance(root.getRight());
+		int rh = checkBalance(root.right);
 		if(rh == -1) return rh;
 		
 		if(Math.abs(lh-rh) > 1) return -1;

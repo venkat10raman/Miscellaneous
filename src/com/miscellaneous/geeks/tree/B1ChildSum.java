@@ -4,12 +4,12 @@ public class B1ChildSum {
 
 	public static void main(String[] args) {
 		BNode root = new BNode(20);
-		root.setLeft(new BNode(8));
+		root.left = (new BNode(8));
 		
 		
-		root.setRight(new BNode(12));
-		root.getRight().setLeft(new BNode(3));
-		root.getRight().setRight(new BNode(9));
+		root.right = (new BNode(12));
+		root.right.left = (new BNode(3));
+		root.right.right = (new BNode(9));
 		
 		boolean isChildSum = childSum(root);
 		System.out.println("Btree isChildSum :: " + isChildSum);
@@ -18,19 +18,19 @@ public class B1ChildSum {
 	private static boolean childSum(BNode node) {
 		if(node == null) return true;
 		
-		if(node.getLeft() == null && node.getRight() == null) {
+		if(node.left == null && node.right == null) {
 			return true;
 		}
 		int sum  = 0;
-		if(node.getLeft() != null) {
-			sum = sum + node.getLeft().getData();
+		if(node.left != null) {
+			sum = sum + node.left.data;
 		}
 		
-		if(node.getRight() != null) {
-			sum = sum + node.getRight().getData();
+		if(node.right != null) {
+			sum = sum + node.right.data;
 		}
 		
-		return (node.getData() == sum && childSum(node.getLeft()) && childSum(node.getRight()));
+		return (node.data == sum && childSum(node.left) && childSum(node.right));
 	}
 
 }
