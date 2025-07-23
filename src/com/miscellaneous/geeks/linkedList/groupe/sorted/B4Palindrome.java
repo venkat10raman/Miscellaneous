@@ -12,20 +12,20 @@ public class B4Palindrome {
 		} else {
 			Node fast=head, slow=head;
 			
-			while(fast.getNext() != null && fast.getNext().getNext() != null) {
-				fast = fast.getNext().getNext();
-				slow = slow.getNext();
+			while(fast.next != null && fast.next.next != null) {
+				fast = fast.next.next;
+				slow = slow.next;
 			}
-			Node rev = reverseList(slow.getNext());
-			slow.setNext(rev);
+			Node rev = reverseList(slow.next);
+			slow.next = (rev);
 			Node curr = head;
 			while(rev != null) {
-				if(rev.getData() != curr.getData()) {
+				if(rev.data != curr.data) {
 					System.out.println("Given list is not palindrome");
 					return;
 				}
-				rev = rev.getNext();
-				curr = curr.getNext();
+				rev = rev.next;
+				curr = curr.next;
 			}
 			System.out.println("Given list is a Palindrome");
 			print();
@@ -35,10 +35,10 @@ public class B4Palindrome {
 	
 	private Node reverseList(Node node) {
 		Node curr = node;
-		Node prev = null, next = curr.getNext();
+		Node prev = null, next = curr.next;
 		while(curr != null) {
-			next = curr.getNext();
-			curr.setNext(prev);
+			next = curr.next;
+			curr.next = (prev);
 			prev = curr;
 			curr = next;
 		}
@@ -61,10 +61,10 @@ public class B4Palindrome {
 			head = new Node(data);
 		} else {
 			Node curr = head;
-			while(curr.getNext() != null) {
-				curr = curr.getNext();
+			while(curr.next != null) {
+				curr = curr.next;
 			}
-			curr.setNext(new Node(data));
+			curr.next = (new Node(data));
 		}
 	}
 	
@@ -74,8 +74,8 @@ public class B4Palindrome {
 		} else {
 			Node temp = head;
 			while(temp != null) {
-				System.out.print(" --> " + temp.getData());
-				temp = temp.getNext();
+				System.out.print(" --> " + temp.data);
+				temp = temp.next;
 			}
 			System.out.println();
 		}

@@ -9,23 +9,23 @@ public class A3NthFromEnd {
 	private void nthFromEnd(int position) {
 		if(head == null) {
 			System.out.println("The list is empty");
-		} else if(position == 1 && head.getNext() == null) {
-			System.out.println(position + "th node from the End is :: " + head.getData());
+		} else if(position == 1 && head.next == null) {
+			System.out.println(position + "th node from the End is :: " + head.data);
 		} else {
 			Node fast = head;
 			Node slow = head;
 			int count = 1;
 			while (count < position && fast != null) {
 				count++;
-				fast = fast.getNext();
+				fast = fast.next;
 			}
 			
 			if(fast != null && count <= position) {
-				while(fast != null && fast.getNext() != null) {
-					fast = fast.getNext();
-					slow = slow.getNext();
+				while(fast != null && fast.next != null) {
+					fast = fast.next;
+					slow = slow.next;
 				}
-				System.out.println(position + "th node from the End is :: " + slow.getData());
+				System.out.println(position + "th node from the End is :: " + slow.data);
 			} else {
 				System.out.println("Given position is outofbound...");
 			}
@@ -51,10 +51,10 @@ public class A3NthFromEnd {
 			head = new Node(data);
 		} else {
 			Node curr = head;
-			while(curr.getNext() != null) {
-				curr = curr.getNext();
+			while(curr.next != null) {
+				curr = curr.next;
 			}
-			curr.setNext(new Node(data));
+			curr.next = (new Node(data));
 		}
 	}
 	
@@ -64,8 +64,8 @@ public class A3NthFromEnd {
 		} else {
 			Node temp = head;
 			while(temp != null) {
-				System.out.print(" --> " + temp.getData());
-				temp = temp.getNext();
+				System.out.print(" --> " + temp.data);
+				temp = temp.next;
 			}
 			System.out.println();
 		}

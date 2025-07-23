@@ -11,16 +11,16 @@ public class A1Insert {
 			System.out.println("The list is empty");
 			return;
 		}
-		System.out.print(head.getData() + " --> ");
-		for(Node n=head.getNext(); n != head; n=n.getNext()) {
-			System.out.print(n.getData() + " --> ");
+		System.out.print(head.data + " --> ");
+		for(Node n=head.next; n != head; n=n.next) {
+			System.out.print(n.data + " --> ");
 		}
 		
 		System.out.println();
 		Node node = head;
 		do {
-			System.out.print(node.getData() + " --> ");
-			node = node.getNext();
+			System.out.print(node.data + " --> ");
+			node = node.next;
 		} while (node != head);
 		System.out.println();
 	}
@@ -29,29 +29,29 @@ public class A1Insert {
 		Node temp = new Node(data);
 		if(head == null) {
 			head = temp;
-			temp.setNext(head);
+			temp.next = (head);
 		} else {
 			Node node = head;
-			while(node.getNext() != head) {
-				node = node.getNext();
+			while(node.next != head) {
+				node = node.next;
 			}
-			node.setNext(temp);
-			temp.setNext(head);
+			node.next = (temp);
+			temp.next = (head);
 		}
 	}
 	
 	private void deleteHead() {
 		if(head == null) {
 			System.out.println("The list is Empty!");
-		} else if(head.getNext() == head) {
+		} else if(head.next == head) {
 			head = null;
 		} else {
 			Node curr = head;
-			while(curr.getNext() != head) {
-				curr = curr.getNext();
+			while(curr.next != head) {
+				curr = curr.next;
 			}
-			curr.setNext(head.getNext());
-			head = curr.getNext();
+			curr.next = (head.next);
+			head = curr.next;
 		}
 	}
 

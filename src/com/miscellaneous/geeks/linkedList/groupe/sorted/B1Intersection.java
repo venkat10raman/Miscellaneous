@@ -10,30 +10,30 @@ public class B1Intersection {
 		Node node1 = head1, node2 = head2;
 		while(node1 != null) {
 			length1++;
-			node1 = node1.getNext();
+			node1 = node1.next;
 		}
 		
 		while(node2 != null) {
 			length2++;
-			node2 = node2.getNext();
+			node2 = node2.next;
 		}
 		int big = 1; diff = Math.abs(length1-length2);
 		
 		node1 = length1>length2 ? head1 : head2;
 		node2 = length1>length2 ? head2 : head1;
 		while(big <= diff) {
-			node1 = node1.getNext();
+			node1 = node1.next;
 			big++;
 		}
 		while(node2 != null && node1 != null) {
 			if(node1 == node2) {
-				System.out.println("The intersecting node is :: " + node1.getData());
+				System.out.println("The intersecting node is :: " + node1.data);
 				break;
 			}
-			node1 = node1.getNext();
-			node2 = node2.getNext();
+			node1 = node1.next;
+			node2 = node2.next;
 		}
-		if(node2.getNext() == null) {
+		if(node2.next == null) {
 			System.out.println("No intersecting node is present ");
 		}
 	}
@@ -52,7 +52,7 @@ public class B1Intersection {
 		B1Intersection ll2 = new B1Intersection();
 		Node head2 = new Node(1);
 		Node insersection2 = ll2.insertNode(head2, 2);
-		insersection2.setNext(insersection1);
+		insersection2.next = (insersection1);
 		
 		ll1.print(head1);
 		ll2.print(head2);
@@ -65,10 +65,10 @@ public class B1Intersection {
 			head = temp;
 		} else {
 			Node curr = head;
-			while(curr.getNext() != null) {
-				curr = curr.getNext();
+			while(curr.next != null) {
+				curr = curr.next;
 			}
-			curr.setNext(temp);
+			curr.next = (temp);
 		}
 		return temp;
 	}
@@ -79,8 +79,8 @@ public class B1Intersection {
 		} else {
 			Node temp = head;
 			do {
-				System.out.print(" --> " + temp.getData());
-				temp = temp.getNext();
+				System.out.print(" --> " + temp.data);
+				temp = temp.next;
 			} while(temp != head && temp != null);
 			System.out.println();
 		}

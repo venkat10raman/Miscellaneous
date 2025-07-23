@@ -11,15 +11,15 @@ public class A5RemoveDuplicates {
 			System.out.println("The list is empty");
 		} else {
 			Node prev = head;
-			Node curr = head.getNext();
+			Node curr = head.next;
 			
 			while(curr != null) {
-				if(curr.getData() == prev.getData()) {
-					prev.setNext(curr.getNext());
+				if(curr.data == prev.data) {
+					prev.next = (curr.next);
 				} else {
-					prev = prev.getNext();
+					prev = prev.next;
 				}
-				curr = curr.getNext();
+				curr = curr.next;
 			}
 		}
 	}
@@ -45,10 +45,10 @@ public class A5RemoveDuplicates {
 			head = new Node(data);
 		} else {
 			Node curr = head;
-			while(curr.getNext() != null) {
-				curr = curr.getNext();
+			while(curr.next != null) {
+				curr = curr.next;
 			}
-			curr.setNext(new Node(data));
+			curr.next = (new Node(data));
 		}
 	}
 	
@@ -58,8 +58,8 @@ public class A5RemoveDuplicates {
 		} else {
 			Node temp = head;
 			while(temp != null) {
-				System.out.print(" --> " + temp.getData());
-				temp = temp.getNext();
+				System.out.print(" --> " + temp.data);
+				temp = temp.next;
 			}
 			System.out.println();
 		}

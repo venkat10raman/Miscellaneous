@@ -12,12 +12,12 @@ public class A4Search {
 			int index = 0;
 			boolean notFound = true;
 			while(node != null) {
-				if(node.getData() == data) {
+				if(node.data == data) {
 					notFound = false;
 					System.out.println(data + " is found at index " + index);
 				}
 				index++;
-				node = node.getNext();
+				node = node.next;
 			}
 			if(notFound) {
 				System.out.println(data + " is not present in the linked-list");
@@ -28,11 +28,11 @@ public class A4Search {
 	private void recursiveSearch(Node node, int data, int index) {
 		if(node == null) {
 			System.out.println(data + " is not present in the linked-list");
-		} else if(node.getData() == data ) {
+		} else if(node.data == data ) {
 			System.out.println(data + " is found at index " + index);
-			recursiveSearch(node.getNext(), data, index+1);
+			recursiveSearch(node.next, data, index+1);
 		} else {
-			recursiveSearch(node.getNext(), data, index+1);
+			recursiveSearch(node.next, data, index+1);
 		}
 	}
 	
@@ -41,10 +41,10 @@ public class A4Search {
 			head = new Node(data);
 		} else {
 			Node curr = head;
-			while(curr.getNext() != null) {
-				curr = curr.getNext();
+			while(curr.next != null) {
+				curr = curr.next;
 			}
-			curr.setNext(new Node(data));
+			curr.next = new Node(data);
 		}
 	}
 

@@ -16,35 +16,35 @@ public class B3MergeSorted {
 		} else {
 			Node head = null, tail = null;
 			
-			if(one.getData() <= two.getData()) {
+			if(one.data <= two.data) {
 				head = tail = one;
-				one = one.getNext();
+				one = one.next;
 			} else {
 				head = tail = two;
-				two = two.getNext();
+				two = two.next;
 			}
 			
 			while(one != null && two != null) {
-				if(one.getData() < two.getData()) {
-					tail.setNext(one);
-					one = one.getNext();
+				if(one.data < two.data) {
+					tail.next = (one);
+					one = one.next;
 				} else {
-					tail.setNext(two);
-					two = two.getNext();
+					tail.next = (two);
+					two = two.next;
 				}
-				tail = tail.getNext();
+				tail = tail.next;
 			}
 			
 			while(one != null) {
-				tail.setNext(one);
-				one = one.getNext();
-				tail = tail.getNext();
+				tail.next = (one);
+				one = one.next;
+				tail = tail.next;
 			}
 			
 			while(two != null) {
-				tail.setNext(two);
-				two = two.getNext();
-				tail = tail.getNext();
+				tail.next = (two);
+				two = two.next;
+				tail = tail.next;
 			}
 			print(head);
 		}
@@ -78,10 +78,10 @@ public class B3MergeSorted {
 			head = temp;
 		} else {
 			Node curr = head;
-			while(curr.getNext() != null) {
-				curr = curr.getNext();
+			while(curr.next != null) {
+				curr = curr.next;
 			}
-			curr.setNext(temp);
+			curr.next = (temp);
 		}
 		return temp;
 	}
@@ -92,8 +92,8 @@ public class B3MergeSorted {
 		} else {
 			Node temp = head;
 			do {
-				System.out.print(" --> " + temp.getData());
-				temp = temp.getNext();
+				System.out.print(" --> " + temp.data);
+				temp = temp.next;
 			} while(temp != head && temp != null);
 			System.out.println();
 		}

@@ -11,11 +11,11 @@ public class A2Middle {
 			System.out.println("The list is empty");
 		} else {
 			Node slow=head, fast=head;
-			while(fast != null && fast.getNext() != null) {
-				fast = fast.getNext().getNext();
-				slow = slow.getNext();
+			while(fast != null && fast.next != null) {
+				fast = fast.next.next;
+				slow = slow.next;
 			}
-			System.out.println("The middle node is :: " + slow.getData());
+			System.out.println("The middle node is :: " + slow.data);
 		}
 	}
 
@@ -38,10 +38,10 @@ public class A2Middle {
 			head = new Node(data);
 		} else {
 			Node curr = head;
-			while(curr.getNext() != null) {
-				curr = curr.getNext();
+			while(curr.next != null) {
+				curr = curr.next;
 			}
-			curr.setNext(new Node(data));
+			curr.next = (new Node(data));
 		}
 	}
 	
@@ -51,8 +51,8 @@ public class A2Middle {
 		} else {
 			Node temp = head;
 			while(temp != null) {
-				System.out.print(" --> " + temp.getData());
-				temp = temp.getNext();
+				System.out.print(" --> " + temp.data);
+				temp = temp.next;
 			}
 			System.out.println();
 		}

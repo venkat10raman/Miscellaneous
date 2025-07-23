@@ -10,14 +10,14 @@ public class A4InsertEnd {
 		Node newNode = new Node(data);
 		if(head == null) {
 			head = newNode;
-			newNode.setNext(head);
+			newNode.next = (head);
 		} else {
-			newNode.setNext(head.getNext());
-			head.setNext(newNode);
+			newNode.next = (head.next);
+			head.next = (newNode);
 			
-			int temp = head.getData();
-			head.setData(newNode.getData());
-			newNode.setData(temp);
+			int temp = head.data;
+			head.data = (newNode.data);
+			newNode.data = (temp);
 		}
 	}
 
@@ -36,8 +36,8 @@ public class A4InsertEnd {
 		} else {
 			Node node = head;
 			do {
-				System.out.print(node.getData() + " --> ");
-				node = node.getNext();
+				System.out.print(node.data + " --> ");
+				node = node.next;
 			} while(node != head);
 			System.out.println();
 		}

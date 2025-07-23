@@ -30,7 +30,7 @@ public class A1Queue {
 			head = temp;
 			tail = temp;
 		} else {
-			tail.setNext(temp);
+			tail.next = (temp);
 			tail = temp;
 		}
 	}
@@ -39,8 +39,8 @@ public class A1Queue {
 		if(head == null) {
 			System.out.println("The queue is empty");
 		} else {
-			System.out.println(head.getData() + " :: dequed from the Queue");
-			head = head.getNext();
+			System.out.println(head.data + " :: dequed from the Queue");
+			head = head.next;
 			if(head == null) {
 				tail = null;
 			}

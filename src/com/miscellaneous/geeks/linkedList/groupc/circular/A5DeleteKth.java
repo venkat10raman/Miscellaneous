@@ -9,14 +9,14 @@ public class A5DeleteKth {
 	private void deleteKth(int k) {
 		if(head == null) {
 			System.out.println("The list is empty!");
-		} else if(head.getNext() == head) {
+		} else if(head.next == head) {
 			head = null;
 		} else {
 			Node curr = head;
 			for (int i = 0; i < k-2; i++) {
-				curr = curr.getNext();
+				curr = curr.next;
 			}
-			curr.setNext(curr.getNext().getNext());
+			curr.next = (curr.next.next);
 		}
 	}
 
@@ -37,14 +37,14 @@ public class A5DeleteKth {
 		Node temp = new Node(data);
 		if(head == null) {
 			head = temp;
-			temp.setNext(head);
+			temp.next = (head);
 		} else {
 			Node node = head;
-			while(node.getNext() != head) {
-				node = node.getNext();
+			while(node.next != head) {
+				node = node.next;
 			}
-			node.setNext(temp);
-			temp.setNext(head);
+			node.next = (temp);
+			temp.next = (head);
 		}
 	}
 	
@@ -55,8 +55,8 @@ public class A5DeleteKth {
 		}
 		Node node = head;
 		do {
-			System.out.print(node.getData() + " --> ");
-			node = node.getNext();
+			System.out.print(node.data + " --> ");
+			node = node.next;
 		} while (node != head);
 		System.out.println();
 	}

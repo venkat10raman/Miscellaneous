@@ -10,16 +10,16 @@ public class A1SortedInsert {
 		Node temp = new Node(data);
 		if(head == null) {
 			head = temp;
-		} else if(data < head.getData()) {
-			temp.setNext(head);
+		} else if(data < head.data) {
+			temp.next = (head);
 			head = temp;
 		} else {
 			Node curr = head;
-			while(curr.getNext() != null && curr.getNext().getData() < data) {
-				curr = curr.getNext();
+			while(curr.next != null && curr.next.data < data) {
+				curr = curr.next;
 			}
-			temp.setNext(curr.getNext());
-			curr.setNext(temp);
+			temp.next = (curr.next);
+			curr.next = (temp);
 		}
 	}
 
@@ -29,8 +29,8 @@ public class A1SortedInsert {
 		} else {
 			Node temp = head;
 			while(temp != null) {
-				System.out.print(" --> " + temp.getData());
-				temp = temp.getNext();
+				System.out.print(" --> " + temp.data);
+				temp = temp.next;
 			}
 			System.out.println();
 		}

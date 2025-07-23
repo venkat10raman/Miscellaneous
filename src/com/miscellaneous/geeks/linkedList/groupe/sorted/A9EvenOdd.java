@@ -11,32 +11,32 @@ public class A9EvenOdd {
 		Node os = null, oe = null;
 		Node curr = head;
 		while(curr != null) {
-			if(curr.getData()%2 == 0) {
+			if(curr.data%2 == 0) {
 				if(es == null) {
 					es = curr;
 					ee = curr;
 				} else {
-					ee.setNext(curr);
+					ee.next = (curr);
 					ee = curr;
 				}
 			} else if(os == null) {
 				os = curr;
 				oe = curr;
 			} else {
-				oe.setNext(curr);
+				oe.next = (curr);
 				oe = curr;
 			}
-			curr = curr.getNext();
+			curr = curr.next;
 		}
 		
-		if(head.getData()%2 == 0) {
+		if(head.data%2 == 0) {
 			head = es;
-			ee.setNext(os);
-			oe.setNext(null);
+			ee.next = (os);
+			oe.next = (null);
 		} else {
 			head = os;
-			oe.setNext(es);
-			ee.setNext(null);
+			oe.next = (es);
+			ee.next = (null);
 		}
 	}
 
@@ -71,10 +71,10 @@ public class A9EvenOdd {
 			head = new Node(data);
 		} else {
 			Node curr = head;
-			while(curr.getNext() != null) {
-				curr = curr.getNext();
+			while(curr.next != null) {
+				curr = curr.next;
 			}
-			curr.setNext(new Node(data));
+			curr.next = (new Node(data));
 		}
 	}
 	
@@ -84,8 +84,8 @@ public class A9EvenOdd {
 		} else {
 			Node temp = head;
 			while(temp != null) {
-				System.out.print(" --> " + temp.getData());
-				temp = temp.getNext();
+				System.out.print(" --> " + temp.data);
+				temp = temp.next;
 			}
 			System.out.println();
 		}

@@ -7,11 +7,11 @@ public class A8DeleteNode {
 	private Node head;
 	
 	private void deleteNode(Node node) {
-		if(node.getNext() ==  null) {
-			node.setData(0);
+		if(node.next ==  null) {
+			node.data = (0);
 		} else {
-			node.setData(node.getNext().getData());
-			node.setNext(node.getNext().getNext());
+			node.data = (node.next.data);
+			node.next = (node.next.next);
 		}
 	}
 
@@ -37,10 +37,10 @@ public class A8DeleteNode {
 			head = temp;
 		} else {
 			Node curr = head;
-			while(curr.getNext() != null) {
-				curr = curr.getNext();
+			while(curr.next != null) {
+				curr = curr.next;
 			}
-			curr.setNext(temp);
+			curr.next = (temp);
 		}
 		return temp;
 	}
@@ -51,8 +51,8 @@ public class A8DeleteNode {
 		} else {
 			Node temp = head;
 			do {
-				System.out.print(" --> " + temp.getData());
-				temp = temp.getNext();
+				System.out.print(" --> " + temp.data);
+				temp = temp.next;
 			} while(temp != head && temp != null);
 			System.out.println();
 		}

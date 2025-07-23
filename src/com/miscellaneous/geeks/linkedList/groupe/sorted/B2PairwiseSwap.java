@@ -9,22 +9,22 @@ public class B2PairwiseSwap {
 	private void pairwiseSwap() {
 		if(head == null) {
 			System.out.println("The list is Empty");
-		} else if(head.getNext() == null) {
+		} else if(head.next == null) {
 			System.out.println("The list has only one element");
 			print();
 		} else {
 			Node dummy = new Node(0);
-			Node newHead = null, curr=head, prev=dummy, next=curr.getNext();
-			while(curr != null && curr.getNext() != null) {
-				newHead = curr.getNext();
-				prev.setNext(newHead);
+			Node newHead = null, curr=head, prev=dummy, next=curr.next;
+			while(curr != null && curr.next != null) {
+				newHead = curr.next;
+				prev.next = (newHead);
 				prev = curr;
-				next = newHead.getNext();
-				newHead.setNext(curr);
-				curr.setNext(next);
+				next = newHead.next;
+				newHead.next = (curr);
+				curr.next = (next);
 				curr = next;
 			}
-			head = dummy.getNext();
+			head = dummy.next;
 			dummy = null;
 		}
 	}
@@ -50,10 +50,10 @@ public class B2PairwiseSwap {
 			head = new Node(data);
 		} else {
 			Node curr = head;
-			while(curr.getNext() != null) {
-				curr = curr.getNext();
+			while(curr.next != null) {
+				curr = curr.next;
 			}
-			curr.setNext(new Node(data));
+			curr.next = (new Node(data));
 		}
 	}
 	
@@ -63,8 +63,8 @@ public class B2PairwiseSwap {
 		} else {
 			Node temp = head;
 			while(temp != null) {
-				System.out.print(" --> " + temp.getData());
-				temp = temp.getNext();
+				System.out.print(" --> " + temp.data);
+				temp = temp.next;
 			}
 			System.out.println();
 		}

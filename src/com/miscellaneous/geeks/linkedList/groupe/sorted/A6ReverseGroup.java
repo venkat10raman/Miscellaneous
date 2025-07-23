@@ -11,8 +11,8 @@ public class A6ReverseGroup {
 		int count = 0;
 		
 		while(curr != null && count<groupSize) {
-			next = curr.getNext();
-			curr.setNext(prev);
+			next = curr.next;
+			curr.next = (prev);
 			prev = curr;
 			curr = next;
 			count++;
@@ -20,7 +20,7 @@ public class A6ReverseGroup {
 		
 		if(curr != null) {
 			Node groupHead = recursiveReverseGroup(curr, groupSize);
-			node.setNext(groupHead);
+			node.next = (groupHead);
 		}
 		return prev;
 	}
@@ -32,8 +32,8 @@ public class A6ReverseGroup {
 		while(curr != null) {
 			Node first = curr, prev = null;
 			while(curr != null && count < groupSize) {
-				Node next = curr.getNext();
-				curr.setNext(prev);
+				Node next = curr.next;
+				curr.next = (prev);
 				prev = curr;
 				curr = next;
 				count++;
@@ -42,7 +42,7 @@ public class A6ReverseGroup {
 				isFirstPass = false;
 				head = prev;
 			} else {
-				prevFirst.setNext(prev);
+				prevFirst.next = (prev);
 			}
 			prevFirst = first;
 			count = 0;
@@ -68,10 +68,10 @@ public class A6ReverseGroup {
 			head = new Node(data);
 		} else {
 			Node curr = head;
-			while(curr.getNext() != null) {
-				curr = curr.getNext();
+			while(curr.next != null) {
+				curr = curr.next;
 			}
-			curr.setNext(new Node(data));
+			curr.next = (new Node(data));
 		}
 	}
 	
@@ -81,8 +81,8 @@ public class A6ReverseGroup {
 		} else {
 			Node temp = head;
 			while(temp != null) {
-				System.out.print(" --> " + temp.getData());
-				temp = temp.getNext();
+				System.out.print(" --> " + temp.data);
+				temp = temp.next;
 			}
 			System.out.println();
 		}

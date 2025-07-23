@@ -9,9 +9,9 @@ public class A7DetectLopp {
 	private void detectRemoveLoop() {
 		Node slow=head, fast=head;
 		
-		while(fast != null && fast.getNext() != null) {
-			slow = slow.getNext();
-			fast = fast.getNext().getNext();
+		while(fast != null && fast.next != null) {
+			slow = slow.next;
+			fast = fast.next.next;
 			
 			if(slow == fast) {
 				break;
@@ -22,17 +22,17 @@ public class A7DetectLopp {
 			System.out.println("No loop found in the linked list");
 		} else {
 			if(slow == head) {
-				while(slow.getNext() != fast) {
-					slow = slow.getNext();
+				while(slow.next != fast) {
+					slow = slow.next;
 				}
-				slow.setNext(null);
+				slow.next = (null);
 			} else {
 				slow = head;
-				while(slow.getNext() != fast.getNext()) {
-					slow = slow.getNext();
-					fast = fast.getNext();
+				while(slow.next != fast.next) {
+					slow = slow.next;
+					fast = fast.next;
 				}
-				fast.setNext(null);
+				fast.next = (null);
 			}
 			
 		}
@@ -57,7 +57,7 @@ public class A7DetectLopp {
 		Node node = ll.insertNode(30);
 		ll.insertNode(40);
 		ll.insertNode(50);
-		ll.insertNode(60).setNext(node);
+		ll.insertNode(60).next = (node);
 		ll.detectRemoveLoop();
 		ll.print();
 	}
@@ -68,10 +68,10 @@ public class A7DetectLopp {
 			head = temp;
 		} else {
 			Node curr = head;
-			while(curr.getNext() != null) {
-				curr = curr.getNext();
+			while(curr.next != null) {
+				curr = curr.next;
 			}
-			curr.setNext(temp);
+			curr.next = (temp);
 		}
 		return temp;
 	}
@@ -80,14 +80,14 @@ public class A7DetectLopp {
 		Node temp = new Node(data);
 		if(head == null) {
 			head = temp;
-			temp.setNext(head);
+			temp.next = (head);
 		} else {
 			Node curr = head;
-			while(curr.getNext() != head){
-				curr = curr.getNext();
+			while(curr.next != head){
+				curr = curr.next;
 			}
-			curr.setNext(temp);
-			temp.setNext(head);
+			curr.next = (temp);
+			temp.next = (head);
 		}
 	}
 	
@@ -97,8 +97,8 @@ public class A7DetectLopp {
 		} else {
 			Node temp = head;
 			do {
-				System.out.print(" --> " + temp.getData());
-				temp = temp.getNext();
+				System.out.print(" --> " + temp.data);
+				temp = temp.next;
 			} while(temp != head && temp != null);
 			System.out.println();
 		}

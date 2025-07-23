@@ -12,21 +12,21 @@ public class A2InsertHead {
 		if(head == null) {
 			head = temp;
 			tail = head;
-			temp.setNext(head);
+			temp.next = (head);
 		} else {
-			tail.setNext(temp);
-			temp.setNext(head);
+			tail.next = (temp);
+			temp.next = (head);
 		}
 	}
 	
 	private void deleteHead() {
 		if(head == null) {
 			System.out.println("The list is Empty!");
-		} else if(head.getNext() == head) {
+		} else if(head.next == head) {
 			head = null;
 		} else {
-			tail.setNext(head.getNext());
-			head = tail.getNext();
+			tail.next = (head.next);
+			head = tail.next;
 		}
 	}
 
@@ -48,8 +48,8 @@ public class A2InsertHead {
 		}
 		Node node = head;
 		do {
-			System.out.print(node.getData() + " --> ");
-			node = node.getNext();
+			System.out.print(node.data + " --> ");
+			node = node.next;
 		} while (node != head);
 		System.out.println();
 	}

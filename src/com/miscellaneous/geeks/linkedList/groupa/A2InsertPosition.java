@@ -9,7 +9,7 @@ public class A2InsertPosition {
 		if(head == null) {
 			head = newHead;
 		} else {
-			newHead.setNext(head);
+			newHead.next = head;
 			head = newHead;
 		}
 	}
@@ -20,10 +20,10 @@ public class A2InsertPosition {
 			head = tail;
 		} else {
 			Node curr = head;
-			while(curr.getNext() != null) {
-				curr = curr.getNext();
+			while(curr.next != null) {
+				curr = curr.next;
 			}
-			curr.setNext(tail);
+			curr.next = tail;
 		}
 	}
 	
@@ -34,22 +34,22 @@ public class A2InsertPosition {
 		} else {
 			Node curr = head;
 			if(index == 0) {
-				node.setNext(head);
+				node.next = head;
 				head = node;
 				return;
 			}
 			int position = 1;
-			while(curr.getNext() != null && position < index) {
-				curr = curr.getNext();
+			while(curr.next != null && position < index) {
+				curr = curr.next;
 				position++;
 			}
 			if(index > position) {
 				System.out.println("Given index is outOfBound");
-			} else if(curr.getNext() == null && index == position) {
-				curr.setNext(node);
+			} else if(curr.next == null && index == position) {
+				curr.next = node;
 			} else {
-				node.setNext(curr.getNext());
-				curr.setNext(node);
+				node.next = curr.next;
+				curr.next = node;
 			}
 			
 		}
@@ -61,8 +61,8 @@ public class A2InsertPosition {
 		} else {
 			Node temp = head;
 			while(temp != null) {
-				System.out.print(" --> " + temp.getData());
-				temp = temp.getNext();
+				System.out.print(" --> " + temp.data);
+				temp = temp.next;
 			}
 			System.out.println();
 		}

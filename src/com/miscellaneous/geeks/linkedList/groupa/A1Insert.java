@@ -9,10 +9,10 @@ public class A1Insert {
 			head = new Node(data);
 		} else {
 			Node curr = head;
-			while(curr.getNext() != null) {
-				curr = curr.getNext();
+			while(curr.next != null) {
+				curr = curr.next;
 			}
-			curr.setNext(new Node(data));
+			curr.next = new Node(data);
 		}
 	}
 	
@@ -22,8 +22,8 @@ public class A1Insert {
 		} else {
 			Node temp = head;
 			while(temp != null) {
-				System.out.print(" --> " + temp.getData());
-				temp = temp.getNext();
+				System.out.print(" --> " + temp.data);
+				temp = temp.next;
 			}
 			System.out.println();
 		}
@@ -34,8 +34,8 @@ public class A1Insert {
 			System.out.println();
 			return;
 		}
-		System.out.print(" --> " + node.getData());
-		recursivePrint(node.getNext());
+		System.out.print(" --> " + node.data);
+		recursivePrint(node.next);
 	}
 
 	public static void main(String[] args) {

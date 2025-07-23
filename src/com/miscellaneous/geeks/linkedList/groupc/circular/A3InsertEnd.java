@@ -12,10 +12,10 @@ public class A3InsertEnd {
 		if(head == null) {
 			head = temp;
 			tail = temp;
-			temp.setNext(head);
+			temp.next = (head);
 		} else {
-			temp.setNext(head);
-			tail.setNext(temp);
+			temp.next = (head);
+			tail.next = (temp);
 			tail = temp;
 		}
 	}
@@ -35,8 +35,8 @@ public class A3InsertEnd {
 		} else {
 			Node node = head;
 			do {
-				System.out.print(node.getData() + " --> ");
-				node = node.getNext();
+				System.out.print(node.data + " --> ");
+				node = node.next;
 			} while(node != head);
 			System.out.println();
 		}
